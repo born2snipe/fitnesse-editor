@@ -21,15 +21,29 @@ function insertTheNewEditorWindow() {
   editorElement.setAttribute("style", "width: 640px; height: 480px; margin: 110px auto auto 140px;");
   $("body").prepend(editorElement);
  
-  //var keybindings = require("ace/keyboard/keybinding/vim").Vim;
   editor = ace.edit(editorId);
 
   chrome.extension.sendRequest({method: "theme"}, function(response) {
     editor.setTheme(response.value);
   });
-  //editor.setKeyboardHandler(keybindings);
+  loadKeybinding(editor);
 }
 
 function hideTheDefaultEditorWindow() {
   $("textarea").css("visibility", "hidden");
+}
+
+function loadKeybinding(editor) {
+  chrome.extension.sendRequest({method: "keybinding"}, function(response) {
+    if (response.value != null) {
+      var required = require(response.value);
+      if (response.value.indexOf('vim') != -1) {
+        editor.setKeyboardHandler(required.Vim);
+      } else {
+        editor.setKeyboardHandler(required.Emacs);
+      }
+    } else {
+      editor.setKeyboardHandler(null);
+    }
+  });
 }

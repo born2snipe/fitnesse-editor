@@ -14,7 +14,12 @@
 <script src="../lib/jquery.min.js"></script>
 <script>
 function saveOptions() {
-  localStorage["keybinding"] = $("select[name='keybinding']").val();
+  var keybindingValue = $("select[name='keybinding']").val();
+  if (keybindingValue == "none") {
+    localStorage["keybinding"] = null;
+  } else {
+    localStorage["keybinding"] = keybindingValue;
+  }
   localStorage["theme"] = $("select[name='theme']").val();
 }
 
@@ -35,8 +40,8 @@ function loadOptions() {
     <td>
       <select name="keybinding">
         <option value="none">None</option>
-        <option value="vim">VIM</option>
-        <option value="emacs">EMACS</option>
+        <option value="ace/keyboard/keybinding/vim">VIM</option>
+        <option value="ace/keyboard/keybinding/emacs">EMACS</option>
       </select>
     </td>
   </tr>
