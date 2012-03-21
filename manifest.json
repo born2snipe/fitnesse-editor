@@ -1,0 +1,10 @@
+{
+  "name" : "FitNesse Editor",
+  "version" : "0.1",
+  "description" : "A nicer editor for the FitNesse Wiki",
+  "content_scripts": [{
+    "matches": ["http://*/*?edit"],
+    "js": ["lib/jquery.min.js", "lib/ace/ace.js", "lib/ace/theme-clouds.js", "lib/ace/keybinding-vim.js", "src/edit.js"],
+    "run_at": "document_end"
+  }]
+}
