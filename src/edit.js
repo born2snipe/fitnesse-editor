@@ -22,9 +22,11 @@ function insertTheNewEditorWindow() {
   $("body").prepend(editorElement);
  
   //var keybindings = require("ace/keyboard/keybinding/vim").Vim;
-
   editor = ace.edit(editorId);
-  editor.setTheme("ace/theme/clouds");
+
+  chrome.extension.sendRequest({method: "theme"}, function(response) {
+    editor.setTheme(response.value);
+  });
   //editor.setKeyboardHandler(keybindings);
 }
 

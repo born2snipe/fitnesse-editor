@@ -1,0 +1,9 @@
+<html>
+<head>
+<script>
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+      sendResponse({value: localStorage[request.method]});
+});
+</script>
+</head>
+</html>

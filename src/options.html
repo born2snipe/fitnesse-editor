@@ -1,0 +1,71 @@
+<html>
+<head>
+ <title>FitNesse Editor</title>
+<style>
+.heading {
+ border-top: 1px solid #BBBBBB;
+ border-bottom: 1px solid #BBBBBB;
+ font-weight: bold;
+ padding: 5px;
+ background-color: #CCCCCC;
+ margin-bottom: 10px;
+}
+</style>
+<script src="../lib/jquery.min.js"></script>
+<script>
+function saveOptions() {
+  localStorage["keybinding"] = $("select[name='keybinding']").val();
+  localStorage["theme"] = $("select[name='theme']").val();
+}
+
+function loadOptions() {
+  var keybinding = localStorage["keybinding"];
+  var theme = localStorage["theme"];
+
+  $("select[name='keybinding']").val(keybinding);
+  $("select[name='theme']").val(theme);
+}
+</script>
+</head>
+<body onload="loadOptions()">
+ <h4 class="heading">Options</h4>
+ <table>
+  <tr>
+    <td>Keybinding:</td>
+    <td>
+      <select name="keybinding">
+        <option value="none">None</option>
+        <option value="vim">VIM</option>
+        <option value="emacs">EMACS</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Theme:</td>
+    <td>
+        <select name="theme" size="1">
+          <option value="ace/theme/clouds">Clouds</option>
+          <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+          <option value="ace/theme/cobalt">Cobalt</option>
+          <option value="ace/theme/crimson_editor">Crimson Editor</option>
+          <option value="ace/theme/dawn">Dawn</option>
+          <option value="ace/theme/eclipse">Eclipse</option>
+          <option value="ace/theme/idle_fingers">idleFingers</option>
+          <option value="ace/theme/kr_theme">krTheme</option>
+          <option value="ace/theme/merbivore">Merbivore</option>
+          <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+          <option value="ace/theme/mono_industrial">Mono Industrial</option>
+          <option value="ace/theme/monokai">Monokai</option>
+          <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+          <option value="ace/theme/solarized_dark">Solarized Dark</option>
+          <option value="ace/theme/solarized_light">Solarized Light</option>
+          <option value="ace/theme/textmate">TextMate</option>
+          <option value="ace/theme/twilight">Twilight</option>
+          <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+        </select>      
+    </td>
+  </tr>
+ </table>
+ <input type="button" value="Save" onclick="saveOptions()"/>
+</body>
+</html>

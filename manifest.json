@@ -4,7 +4,33 @@
   "description" : "A nicer editor for the FitNesse Wiki",
   "content_scripts": [{
     "matches": ["http://*/*?edit"],
-    "js": ["lib/jquery.min.js", "lib/ace/ace.js", "lib/ace/theme-clouds.js", "lib/ace/keybinding-vim.js", "src/edit.js"],
+    "js": [
+      "lib/jquery.min.js", 
+      "lib/ace/ace.js",
+      "lib/ace/theme-clouds_midnight.js",
+      "lib/ace/theme-clouds.js", 
+      "lib/ace/theme-cobalt.js",
+      "lib/ace/theme-crimson_editor.js",
+      "lib/ace/theme-dawn.js",
+      "lib/ace/theme-eclipse.js",
+      "lib/ace/theme-idle_fingers.js",
+      "lib/ace/theme-kr_theme.js",
+      "lib/ace/theme-merbivore_soft.js",
+      "lib/ace/theme-merbivore.js",
+      "lib/ace/theme-mono_industrial.js",
+      "lib/ace/theme-monokai.js",
+      "lib/ace/theme-pastel_on_dark.js",
+      "lib/ace/theme-solarized_dark.js",
+      "lib/ace/theme-solarized_light.js",
+      "lib/ace/theme-textmate.js",
+      "lib/ace/theme-twilight.js",
+      "lib/ace/theme-vibrant_ink.js",
+      "lib/ace/keybinding-vim.js",
+      "lib/ace/keybinding-emacs.js", 
+      "src/edit.js"
+    ],
     "run_at": "document_end"
-  }]
+  }],
+  "options_page": "src/options.html",
+  "background_page": "src/background.html"
 }
