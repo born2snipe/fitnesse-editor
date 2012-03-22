@@ -1,1 +1,9 @@
 A chrome extension that changes the editor of FitNesse to the Ace Editor (https://github.com/ajaxorg/ace)
+
+To currently use this extension just:
+
+- clone the fitnesse-editor repository
+- in Chrome go to Tools -> Extensions -> Load unpacked extension...
+- navigate in the file browser to where you cloned the repository and select the project directory
+- you should then see the extension "FitNesse Editor" in your list of extensions
+
