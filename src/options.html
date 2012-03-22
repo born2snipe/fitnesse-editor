@@ -21,14 +21,23 @@ function saveOptions() {
     localStorage["keybinding"] = keybindingValue;
   }
   localStorage["theme"] = $("select[name='theme']").val();
+  localStorage["formatOnSave"] = $("input[name='formatOnSave']").prop("checked");
 }
 
 function loadOptions() {
   var keybinding = localStorage["keybinding"];
   var theme = localStorage["theme"];
+  var formatOnSave = localStorage["formatOnSave"];
 
   $("select[name='keybinding']").val(keybinding);
   $("select[name='theme']").val(theme);
+
+  var formatOnSaveCheckbox = $("input[name='formatOnSave']");
+  if ("true" == formatOnSave) { 
+    formatOnSaveCheckbox.attr("checked", "checked");
+  } else {
+    formatOnSaveCheckbox.removeAttr("checked");
+  }
 }
 </script>
 </head>
@@ -68,6 +77,12 @@ function loadOptions() {
           <option value="ace/theme/twilight">Twilight</option>
           <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
         </select>      
+    </td>
+  </tr>
+  <tr>
+    <td>Format on Save:</td>
+    <td>
+      <input type="checkbox" name="formatOnSave"/>
     </td>
   </tr>
  </table>

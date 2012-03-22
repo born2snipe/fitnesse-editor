@@ -3,6 +3,7 @@ var editor;
 var editorView;
 var editorToolbar;
 var formatter = new WikiFormatter();
+var shouldFormatTextOnSave = false;
 
 $(function() {
   hideTheDefaultEditorWindow();
@@ -12,20 +13,31 @@ $(function() {
   updateTheSave();
   updateTheFormat();
   $(editor).focus();
+  chrome.extension.sendRequest({method: "formatOnSave"}, function(response) {
+    shouldFormatTextOnSave = response.value == "true";
+  });
 });
 
 function updateTheFormat() {
   $("#toolbar_Format").click(function() {
-    var formattedText = formatter.format(editor.getSession().getValue());
-    editor.getSession().setValue(formattedText);
+    formatText();
   });
 }
 
 function updateTheSave() {
   $("#toolbar_Save").click(function() {
+    if (shouldFormatTextOnSave)  {
+      formatText();
+    }   
+
     $("textarea").text(editor.getSession().getValue());
     $("form").submit();
   });
+}
+
+function formatText() {
+  var formattedText = formatter.format(editor.getSession().getValue());
+  editor.getSession().setValue(formattedText);
 }
 
 function insertEditorView() {
