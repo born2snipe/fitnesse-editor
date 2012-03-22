@@ -21,6 +21,7 @@ $(function() {
 function updateTheFormat() {
   $("#toolbar_Format").click(function() {
     formatText();
+    $(editor).focus();
   });
 }
 
@@ -61,12 +62,12 @@ function toolbarButton(text) {
   var button = document.createElement("a");
   button.setAttribute("id", "toolbar_"+text);
   button.innerHTML = text;
-  button.setAttribute("style", "color: #666666;padding:2px;background-color:#DDDDDD;border-top:1px solid #BBBBBB;border-left:1px solid #BBBBBB;border-right:1px solid #999999;border-bottom:1px solid #999999;margin-right:10px;font-family:verdana;font-size:10pt;cursor:pointer;");
+  button.setAttribute("style", "color: #000000;padding:2px;background-color:#DDDDDD;border-top:1px solid #BBBBBB;border-left:1px solid #BBBBBB;border-right:1px solid #999999;border-bottom:1px solid #999999;margin-right:10px;font-family:verdana;font-size:10pt;cursor:pointer;");
   $(editorToolbar).append(button);
   $(button).hover(function() {
-    $(this).css("color", "#000000").css("background-color", "#EEEEEE");
+    $(this).css("background-color", "#EEEEEE");
   }, function() {
-    $(this).css("color", "#666666").css("background-color", "#DDDDDD");
+    $(this).css("background-color", "#DDDDDD");
   });
 }
 
