@@ -5,6 +5,7 @@
   "content_scripts": [{
     "matches": ["http://*/*?edit"],
     "js": [
+      "lib/fitnesse/WikiFormatter.js",
       "lib/jquery.min.js", 
       "lib/ace/ace.js",
       "lib/ace/theme-clouds_midnight.js",

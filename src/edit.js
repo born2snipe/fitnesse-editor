@@ -2,6 +2,7 @@ var editorId = "ace_editor";
 var editor;
 var editorView;
 var editorToolbar;
+var formatter = new WikiFormatter();
 
 $(function() {
   hideTheDefaultEditorWindow();
@@ -9,7 +10,16 @@ $(function() {
   insertTheNewEditorWindow();
   insertToolbar();
   updateTheSave();
+  updateTheFormat();
+  $(editor).focus();
 });
+
+function updateTheFormat() {
+  $("#toolbar_Format").click(function() {
+    var formattedText = formatter.format(editor.getSession().getValue());
+    editor.getSession().setValue(formattedText);
+  });
+}
 
 function updateTheSave() {
   $("#toolbar_Save").click(function() {
