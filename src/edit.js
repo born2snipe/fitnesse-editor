@@ -12,9 +12,9 @@ $(function() {
 });
 
 function updateTheSave() {
-  $("form").submit(function () { 
+  $("#toolbar_Save").click(function() {
     $("textarea").text(editor.getSession().getValue());
-    return true; 
+    $("form").submit();
   });
 }
 
